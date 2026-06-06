@@ -1,0 +1,9 @@
+# Skill files must use LF regardless of platform (matters for the Python
+# script's shebang and for portable shell behavior).
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.example text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+LICENSE text eol=lf
