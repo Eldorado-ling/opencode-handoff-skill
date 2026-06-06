@@ -1,0 +1,5 @@
+{
+  "shared_repo": "team-org/opencode-handoff",
+  "p2p_repo_name": "opencode-handoff-inbox",
+  "p2p_private": true
+}

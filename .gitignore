@@ -1,0 +1,19 @@
+# Per-user config — never commit (would leak trust lists / repo names across deployers)
+trust.json
+config.json
+
+# Local working clones — auto-created at runtime
+.shared/
+.p2p/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
