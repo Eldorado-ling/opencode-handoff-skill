@@ -200,6 +200,7 @@ git -C <clone-path> config --local core.symlinks false
 git -C <clone-path> config --local submodule.recurse false
 git -C <clone-path> config --local protocol.allow never
 git -C <clone-path> config --local protocol.https.allow always
+git -C <clone-path> config --local protocol.ssh.allow always
 git -C <clone-path> config --local protocol.file.allow never
 ```
 

@@ -337,11 +337,11 @@ def process_file(
     result["url"] = url_or_reason
 
     # Tier 4: commit author + committer attribution
-    sha = get_add_sha(clone, filename)
+    sha = get_last_modifying_sha(clone, filename)
     result["commit_sha"] = sha
     if not sha:
         result["tier_failed"] = 4
-        result["tier_failed_reason"] = "无法定位添加此文件的 commit"
+        result["tier_failed_reason"] = "无法定位最近修改此文件的 commit"
         result["action"] = "keep"
         return result
     ok4, author, committer = verify_tier_4(repo, sha, claimed)
