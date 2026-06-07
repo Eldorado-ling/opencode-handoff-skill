@@ -188,6 +188,7 @@ gh repo clone "<repo>" "<path>" -- \
   -c protocol.file.allow=never \
   -c protocol.allow=never \
   -c protocol.https.allow=always \
+  -c protocol.ssh.allow=always \
   -c submodule.recurse=false
 ```
 
@@ -213,6 +214,7 @@ This is belt-and-suspenders: clone-time flags protect the initial checkout, post
    gh repo clone "<shared_repo>" ~/.config/opencode/skills/opencode-handoff/.shared -- \
      -c core.symlinks=false -c protocol.file.allow=never \
      -c protocol.allow=never -c protocol.https.allow=always \
+     -c protocol.ssh.allow=always \
      -c submodule.recurse=false
    ```
 2. **Privacy check**: `is_private=$(gh api "repos/<shared_repo>" --jq .private)`. If `is_private == false`: warn the user `"WARNING: shared_repo '<shared_repo>' is public. All past and future share URLs are visible to anyone who can read git history. Consider making it private."` and ask whether to continue.
@@ -232,6 +234,7 @@ This is belt-and-suspenders: clone-time flags protect the initial checkout, post
    gh repo clone "$ME/$P2P_REPO_NAME" ~/.config/opencode/skills/opencode-handoff/.p2p -- \
      -c core.symlinks=false -c protocol.file.allow=never \
      -c protocol.allow=never -c protocol.https.allow=always \
+     -c protocol.ssh.allow=always \
      -c submodule.recurse=false
    ```
 5. Persist hardening to local config (the post-clone commands listed above).
@@ -538,6 +541,7 @@ Trigger phrases: "发给 X", "把会话发给 X", "send this to X", "hand off to
    gh repo clone "<recipient>/$P2P_REPO_NAME" "$tmpdir" -- \
      -c core.symlinks=false -c protocol.file.allow=never \
      -c protocol.allow=never -c protocol.https.allow=always \
+     -c protocol.ssh.allow=always \
      -c submodule.recurse=false
    ```
 3. Persist hardening to local config of the temp clone.
