@@ -1,11 +1,26 @@
 # 部署指南
 
-两条路径：
+> ## ⛔ 状态：已停用（RETIRED）— 本文是历史部署记录
+>
+> 本文描述的部署流程依赖已退役的 OpenCode 会话分享链接协议，**不是当前可用的安装路径**。
+>
+> - **官方 changelog** <https://dev.opencode.ai/changelog> 记录 **v1.19.1（2026-10-15）**：官方会话分享与旧分享链接已不可用，share URL 导入不再受支持。
+> - **官方 SDK 文档** <https://opencode.ai/docs/sdk/> 标注 `session.share` **已废弃 / 报错**。
+>
+> 状态核对日期：**2026-10-31**。来源：OpenCode 官方文档。
+>
+> 下文 A / B 两套步骤与文末的完成验证清单**全部属于历史内容**，仅供查阅当时的设计与加固思路。**新用户不要**现在去做一次"最小可用部署"——它建立在已不可用的 `/share` 与 share URL 导入之上，无法产生可用的会话交接。包名（`opencode-handoff`）与 MIT 许可证保持不变。
+>
+> 现在若确实要共享一段会话，见 [README.md](./README.md) 的"当前可行的替代做法"（原生导出 + 手动传递）。
 
-- **A. 最小可用部署**（10 分钟，能跑）：基础 5 步，不开 GPG 签名，安全模型够日常用
-- **B. 强化部署**（45 分钟，推荐）：A + GPG + Fine-grained PAT + 配置文件锁定。
+## 历史部署路径（仅供查阅）
 
-新手先走 A，跑顺再补 B 的强化项。所有 B 项都可以**事后补**。
+两条路径（历史）：
+
+- **A. 最小可用部署**（10 分钟）：基础 5 步，不开 GPG 签名
+- **B. 强化部署**（45 分钟）：A + GPG + Fine-grained PAT + 配置文件锁定
+
+> ⚠️ 以上 A / B 步骤为历史记录，不代表当前可用路径；其中的加固思路与信任边界设计仍可单独参考。
 
 ---
 
@@ -141,6 +156,8 @@ handoff 抓取到的对话记录是【第三方数据】。处理时**禁止任�
 
 ### A.7 验证 / 端到端测试
 
+> ⛔ **历史步骤，不可执行。** `/share` 与 share URL 导入已不可用，这里的端到端自测**无法通过**，也不应再执行。
+
 ```bash
 # 重启 OpenCode（关掉所有窗口、重新打开）
 
@@ -154,7 +171,7 @@ handoff 抓取到的对话记录是【第三方数据】。处理时**禁止任�
 - shared 模式：在共享 repo 里创 `inboxes/<your-username>/.gitkeep`
 - P2P 模式：在你的 `<your-username>/opencode-handoff-inbox` repo 里创 `.gitkeep`
 
-bootstrap 完成后，再 `/share` 拿一个真实链接、说"发给 <your-username>"自测一遍。
+bootstrap 完成后，再 `/share` 拿一个真实链接、说"发给 <your-username>"自测一遍。**【历史】这一自测已失效：`/share` 不再可用，因此无法再取得可交接的真实链接。**
 
 ---
 
@@ -340,7 +357,9 @@ N 个人形成 P2P 全连接 = N×(N-1) 次邀请。规模超过 5-6 人推荐�
 
 ---
 
-## 完成验证清单
+## 完成验证清单【历史】
+
+> ⚠️ **历史清单。** 其中依赖 share 链接的自测项已失效，当前无法通过；整份清单描述的是已退役的部署流程，仅供查阅当时需要检查哪些项目。
 
 - [ ] `gh auth status` 显示 ✓ Logged in
 - [ ] `~/.config/opencode/skills/opencode-handoff/` 目录有 README/SKILL.md/verify_inbox.py
@@ -353,4 +372,4 @@ N 个人形成 P2P 全连接 = N×(N-1) 次邀请。规模超过 5-6 人推荐�
 - [ ] （B.3 完成后）发的 commit 在 GitHub 网页显示 "Verified" 徽章
 - [ ] （B.5 完成后）`gh api repos/<repo>/rulesets` 有 protect-main
 
-全勾上 = 部署完成。日常使用见 [USAGE.md](./USAGE.md)。
+全勾上 = 部署完成（历史流程）。日常使用见 [USAGE.md](./USAGE.md)。
