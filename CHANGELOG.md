@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Documentation
+
+- Mark share-URL setup and usage as historical after the upstream service shutdown in v1.19.1 (2026-10-15). Status checked 2026-10-31 against the [official changelog](https://dev.opencode.ai/changelog) and [SDK](https://opencode.ai/docs/sdk/).
+- Direct the skill to stop before legacy inbox, send, fetch, or retry operations and preserve existing entries and configuration.
+- Describe separately authorized native exports and manual file transfer. This package adds no native-file transport or import; the verifier is unchanged.
+
 ## v1.0.0 — 2026-06-06
 
 Initial release.
